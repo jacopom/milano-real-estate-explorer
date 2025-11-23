@@ -63,6 +63,29 @@ html = '''<!DOCTYPE html>
             right: 0;
             bottom: 0;
         }
+        .no-data-message {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(26, 35, 50, 0.95);
+            border: 3px solid #ff4757;
+            padding: 2rem;
+            text-align: center;
+            z-index: 1000;
+            max-width: 400px;
+        }
+        .no-data-message h3 {
+            color: #ff4757;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+        .no-data-message p {
+            color: #6b8ba3;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
 
         .search-container {
             display: flex;
@@ -361,6 +384,10 @@ html = '''<!DOCTYPE html>
 
     <div class="main-content">
         <div id="map"></div>
+        <div id="no-data-message" class="no-data-message" style="display: none;">
+            <h3>Nessun Dato Disponibile</h3>
+            <p>Non ci sono dati per questa combinazione di filtri. Prova a cambiare la selezione.</p>
+        </div>
     </div>
 
     <footer>
@@ -591,6 +618,15 @@ html += '''
         function updateMap() {
             zoneLayers.forEach(layer => map.removeLayer(layer));
             zoneLayers.clear();
+
+            const noDataMsg = document.getElementById('no-data-message');
+
+            if (filteredData.length === 0) {
+                noDataMsg.style.display = 'block';
+                return;
+            } else {
+                noDataMsg.style.display = 'none';
+            }
 
             filteredData.forEach(zone => {
                 const boundary = ZONE_BOUNDARIES.features.find(f => f.properties.zona === zone.zona);
