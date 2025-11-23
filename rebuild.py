@@ -504,6 +504,8 @@ html += '''
             });
         });
 
+        let legendControl;
+
         function initMap() {
             map = L.map('map').setView(MILAN_CENTER, MILAN_ZOOM);
             L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -511,11 +513,11 @@ html += '''
                 maxZoom: 18
             }).addTo(map);
 
-            // Position legend based on screen size
-            const isMobile = window.innerWidth <= 768;
-            const legend = L.control({ position: isMobile ? 'bottomleft' : 'bottomright' });
-            legend.onAdd = function() {
+            // Position legend - always bottomright, but hide on mobile when popup opens
+            legendControl = L.control({ position: 'bottomright' });
+            legendControl.onAdd = function() {
                 const div = L.DomUtil.create('div', 'legend');
+                div.id = 'map-legend';
                 div.innerHTML = `
                     <h4>Prezzo €/mq</h4>
                     <div class="legend-item">
@@ -537,7 +539,19 @@ html += '''
                 `;
                 return div;
             };
-            legend.addTo(map);
+            legendControl.addTo(map);
+
+            // Hide legend on mobile when popup opens, show when it closes
+            if (window.innerWidth <= 768) {
+                map.on('popupopen', function() {
+                    const legendEl = document.getElementById('map-legend');
+                    if (legendEl) legendEl.style.display = 'none';
+                });
+                map.on('popupclose', function() {
+                    const legendEl = document.getElementById('map-legend');
+                    if (legendEl) legendEl.style.display = 'block';
+                });
+            }
         }
 
         function populateFilters() {
