@@ -119,6 +119,7 @@ html = '''<!DOCTYPE html>
         }
         .description-text {
             display: inline;
+            white-space: nowrap;
         }
         .github-icon-link {
             display: inline-flex;
