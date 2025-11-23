@@ -7,7 +7,7 @@ An interactive web application for visualizing and exploring real estate price q
 
 ## 🚀 Live Demo
 
-[View Live Application](https://[your-username].github.io/milano-real-estate-explorer/)
+[View Live Application](https://jacopom.github.io/milano-real-estate-explorer/)
 
 ## ✨ Features
 
@@ -85,7 +85,7 @@ Search for any Milan address and the map will:
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/[your-username]/milano-real-estate-explorer.git
+git clone https://github.com/jacopom/milano-real-estate-explorer.git
 cd milano-real-estate-explorer
 ```
 
@@ -136,7 +136,7 @@ This project is configured for GitHub Pages:
 4. Choose `main` branch and `/ (root)` folder
 5. Save and wait for deployment
 
-Your site will be live at: `https://[your-username].github.io/milano-real-estate-explorer/`
+Your site will be live at: `https://jacopom.github.io/milano-real-estate-explorer/`
 
 ## 🎯 Usage Examples
 
