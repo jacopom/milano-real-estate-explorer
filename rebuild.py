@@ -355,7 +355,12 @@ html = '''<!DOCTYPE html>
             .description {
                 flex-direction: column;
                 gap: 0.5rem;
-                font-size: 0.7rem;
+                font-size: 0.65rem;
+                padding: 0 1rem;
+            }
+            .description-text {
+                white-space: normal;
+                text-align: center;
             }
         }
     </style>
