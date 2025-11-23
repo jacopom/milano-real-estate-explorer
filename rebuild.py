@@ -240,6 +240,41 @@ html = '''<!DOCTYPE html>
             margin-right: 0.75rem;
             border: 2px solid #00ffc8;
         }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.2rem;
+                margin-bottom: 0.75rem;
+            }
+            .header-controls {
+                flex-direction: column;
+                gap: 0.75rem;
+            }
+            .search-container {
+                max-width: 100%;
+            }
+            .filters-container {
+                width: 100%;
+                gap: 1rem;
+            }
+            .legend {
+                padding: 0.75rem;
+            }
+            .legend h4 {
+                font-size: 0.7rem;
+                margin-bottom: 0.5rem;
+            }
+            .legend-item {
+                font-size: 0.65rem;
+                margin-bottom: 0.3rem;
+            }
+            .legend-color {
+                width: 18px;
+                height: 18px;
+                margin-right: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -384,7 +419,9 @@ html += '''
                 maxZoom: 18
             }).addTo(map);
 
-            const legend = L.control({ position: 'bottomright' });
+            // Position legend based on screen size
+            const isMobile = window.innerWidth <= 768;
+            const legend = L.control({ position: isMobile ? 'topleft' : 'bottomright' });
             legend.onAdd = function() {
                 const div = L.DomUtil.create('div', 'legend');
                 div.innerHTML = `
