@@ -269,6 +269,9 @@ html = '''<!DOCTYPE html>
 
         /* Mobile responsive adjustments */
         @media (max-width: 768px) {
+            header {
+                padding: 1rem;
+            }
             header h1 {
                 font-size: 1.2rem;
                 margin-bottom: 0.75rem;
@@ -276,29 +279,41 @@ html = '''<!DOCTYPE html>
             .header-controls {
                 flex-direction: column;
                 gap: 0.75rem;
+                width: 100%;
             }
             .search-container {
+                width: 100%;
                 max-width: 100%;
             }
             .filters-container {
                 width: 100%;
-                gap: 1rem;
+                gap: 0.75rem;
+                flex-wrap: nowrap;
+            }
+            .filter-group {
+                flex: 1;
+                min-width: 0;
+            }
+            .filter-group select {
+                width: 100%;
+                min-width: 0;
+                font-size: 0.8rem;
             }
             .legend {
-                padding: 0.75rem;
+                padding: 0.5rem;
             }
             .legend h4 {
-                font-size: 0.7rem;
-                margin-bottom: 0.5rem;
+                font-size: 0.65rem;
+                margin-bottom: 0.4rem;
             }
             .legend-item {
-                font-size: 0.65rem;
-                margin-bottom: 0.3rem;
+                font-size: 0.6rem;
+                margin-bottom: 0.25rem;
             }
             .legend-color {
-                width: 18px;
-                height: 18px;
-                margin-right: 0.5rem;
+                width: 16px;
+                height: 16px;
+                margin-right: 0.4rem;
             }
             .description {
                 flex-direction: column;
@@ -457,7 +472,7 @@ html += '''
 
             // Position legend based on screen size
             const isMobile = window.innerWidth <= 768;
-            const legend = L.control({ position: isMobile ? 'topleft' : 'bottomright' });
+            const legend = L.control({ position: isMobile ? 'bottomleft' : 'bottomright' });
             legend.onAdd = function() {
                 const div = L.DomUtil.create('div', 'legend');
                 div.innerHTML = `
