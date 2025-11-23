@@ -40,7 +40,14 @@ html = '''<!DOCTYPE html>
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            font-size: 0.9rem;
+            color: #6b8ba3;
             margin-bottom: 1rem;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
         }
         .header-controls {
             display: flex;
@@ -311,6 +318,10 @@ html = '''<!DOCTYPE html>
             }
             header h1 {
                 font-size: 1.2rem;
+                margin-bottom: 0.5rem;
+            }
+            .subtitle {
+                font-size: 0.75rem;
                 margin-bottom: 0.75rem;
             }
             .header-controls {
@@ -368,6 +379,7 @@ html = '''<!DOCTYPE html>
 <body>
     <header>
         <h1>Milano Real Estate Explorer</h1>
+        <div class="subtitle">Esplora i prezzi immobiliari ufficiali OMI per zona e tipologia a Milano</div>
         <div class="header-controls">
             <div class="search-container">
                 <input type="text" id="address-search" placeholder="Cerca indirizzo (es. Via Montenapoleone)">
